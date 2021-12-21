@@ -1,15 +1,17 @@
 import sys
 
 from person import PersonList
-from serializable import JsonSerializer, YamlSerializer, CSVSerializer
+from serilib import JsonSerializer, YamlSerializer, CSVSerializer
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
-        print('Expected 1 parameter!')
+        print('Expected exactly ONE parameter!')
         exit(1)
     input_path = sys.argv[1]
-    person_list = JsonSerializer.from_file(input_path, PersonList)
-    CSVSerializer.to_file(input_path.replace(".json", ".csv"), person_list)
-    person_list = CSVSerializer.from_file(input_path.replace(".json", ".csv"), PersonList)
-    YamlSerializer.to_file(input_path.replace(".json", ".yml"), person_list)
+    csv_path = input_path.replace(".json", ".csv")
+    yaml_path = input_path.replace(".json", ".yml")
+    person_list = JsonSerializer.deserialize(input_path, PersonList)
+    CSVSerializer.serialize(csv_path, person_list)
+    person_list = CSVSerializer.deserialize(csv_path, PersonList)
+    YamlSerializer.serialize(yaml_path, person_list)
 
