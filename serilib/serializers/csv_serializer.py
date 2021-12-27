@@ -4,7 +4,7 @@ from typing import List, Type, Mapping
 
 from serilib import Serializable
 from serilib.serializable import SerializationError
-from serilib.serializers.base import AbstractSerializer
+from serilib.serializers.abstract_serializer import AbstractSerializer
 
 
 class CSVSerializer(AbstractSerializer):

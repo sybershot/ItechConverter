@@ -1,4 +1,4 @@
-from .serializable import Serializable, DeserializationError
+from .serializable import Serializable
 from .serializers import *
 
 

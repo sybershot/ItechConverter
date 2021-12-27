@@ -1,16 +1,10 @@
 import warnings
 from typing import Mapping
 
-
-class DeserializationError(Exception):
-    pass
+from serilib.serializable.abstract import Serializable, DeserializationError
 
 
-class SerializationError(Exception):
-    pass
-
-
-class Serializable:
+class SerializableObject(Serializable):
     """Marks object as serializable.
     All serializable objects must have _mapper attribute to map fields from dictionary to class attributes and vice versa
     In other cases you need to override serialize and deserialize methods
